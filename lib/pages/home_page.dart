@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:zpotify/components/playlist_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,12 +9,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List playlists = [
+    PlayListTile(title: "Beatiful Sky", image: "assets/images/spotify1.jpg"),
+    PlayListTile(title: "Excellent", image: "assets/images/spotify2.jpg"),
+    PlayListTile(title: "Perfection", image: "assets/images/spotify3.png"),
+    PlayListTile(title: "Best of Best", image: "assets/images/thesmiths.jpg"),
+    PlayListTile(title: "The Stars", image: "assets/images/spotify5.jpg"),
+  ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
-  setState(() {
-    _selectedIndex = index;
-  },);
-}
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                           bottomLeft: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          'assets/images/thesmiths.jpg',
+                          playlists[0].image,
                           alignment: Alignment.centerLeft,
                           fit: BoxFit.contain,
                         ),
@@ -110,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "The Smiths",
+                          playlists[0].title,
                           style: TextStyle(
                             fontSize: 20,
                             color: Theme.of(context).colorScheme.onBackground,
@@ -139,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                           bottomLeft: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          'assets/images/thesmiths.jpg',
+                          playlists[1].image,
                           alignment: Alignment.centerLeft,
                           fit: BoxFit.contain,
                         ),
@@ -147,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "The Smiths",
+                          playlists[1].title,
                           style: TextStyle(
                             fontSize: 20,
                             color: Theme.of(context).colorScheme.onBackground,
@@ -181,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                           bottomLeft: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          'assets/images/thesmiths.jpg',
+                          playlists[2].image,
                           alignment: Alignment.centerLeft,
                           fit: BoxFit.contain,
                         ),
@@ -189,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "The Smiths",
+                          playlists[2].title,
                           style: TextStyle(
                             fontSize: 20,
                             color: Theme.of(context).colorScheme.onBackground,
@@ -218,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                           bottomLeft: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          'assets/images/thesmiths.jpg',
+                          playlists[3].image,
                           alignment: Alignment.centerLeft,
                           fit: BoxFit.contain,
                         ),
@@ -226,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "The Smiths",
+                          playlists[3].title,
                           style: TextStyle(
                             fontSize: 20,
                             color: Theme.of(context).colorScheme.onBackground,
@@ -275,14 +285,14 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/thesmiths.jpg',
+                            playlists[index].image,
                             alignment: Alignment.centerLeft,
                             fit: BoxFit.contain,
                           ),
                           const SizedBox(height: 10),
                           Expanded(
                             child: Text(
-                              "The Smiths",
+                              playlists[index].title,
                               style: TextStyle(
                                 fontSize: 20,
                                 color:
@@ -298,6 +308,74 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 30),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "New releases for you",
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Theme.of(context).colorScheme.onBackground,
+                      fontFamily: 'Proxima',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              playlists[4].image,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              playlists[4].title,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontFamily: 'Proxima',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              playlists[3].image,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              playlists[3].title,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontFamily: 'Proxima',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
