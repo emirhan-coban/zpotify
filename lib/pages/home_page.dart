@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zpotify/components/playlist_tile.dart';
+
+import '../components/playlist_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   List playlists = [
     PlayListTile(title: "Beatiful Sky", image: "assets/images/spotify1.jpg"),
     PlayListTile(title: "Excellent", image: "assets/images/spotify2.jpg"),
@@ -16,63 +18,10 @@ class _HomePageState extends State<HomePage> {
     PlayListTile(title: "Best of Best", image: "assets/images/thesmiths.jpg"),
     PlayListTile(title: "The Stars", image: "assets/images/spotify5.jpg"),
   ];
-  int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(
-      () {
-        _selectedIndex = index;
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {},
-          ),
-        ],
-        elevation: 0,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 28,
-        onTap: _onItemTapped,
-        enableFeedback: false,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
-        selectedItemColor: Theme.of(context).colorScheme.onSecondary,
-        unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
-        currentIndex: _selectedIndex,
-        selectedFontSize: 15,
-        unselectedFontSize: 14,
-        selectedLabelStyle: const TextStyle(
-          fontFamily: 'Proxima',
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontFamily: 'Proxima',
-          fontWeight: FontWeight.bold,
-        ),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_music),
-            label: 'Library',
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
